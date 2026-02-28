@@ -56,8 +56,8 @@ function updateHourlyDisplay(data, targetDate) {
     data.hourly.time.forEach((timeStr, index) => {
         // timeStr format is "YYYY-MM-DDTHH:mm"
         if (timeStr.split('T')[0] === targetDate) {
-            const hour = new Date(timeStr).getHours().toString().padStart(2, '0') + ":00";
-            const temp = Math.round(data.hourly.temperature_2m[index]);
+            const hour = timeStr.split('T')[1];
+            const temp = data.hourly.temperature_2m[index];
             
             hourlyContainer.innerHTML += `
                 <div class="flex justify-between items-center border border-slate-700 px-4 py-3 rounded-lg bg-slate-800 mb-2">
